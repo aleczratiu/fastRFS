@@ -3,7 +3,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-    filename: "[name].[chunkhash].bundle.css",
+    filename: "[name].[md5:contenthash:hex:20].css",
+    disable: process.env.NODE_ENV === "development",
 });
 
 module.exports = {
@@ -12,8 +13,8 @@ module.exports = {
         vendor: ['react', 'react-dom'],
     },
     output: {
-        filename: '[name].[chunkhash].bundle.js',
-        chunkFilename: '[name].[chunkhash].bundle.js',
+        filename: '[name].[md5:contenthash:hex:20].bundle.js',
+        chunkFilename: '[name].[md5:contenthash:hex:20].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     optimization: {
