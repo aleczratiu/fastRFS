@@ -1,4 +1,3 @@
-import { setUser } from '../actions/loggedUser';
 import { LOGGED_USER } from '../actions/constants';
 
 export const loggedUser = (state = {}, action) => {
