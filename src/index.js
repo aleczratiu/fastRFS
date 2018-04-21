@@ -11,7 +11,7 @@ import middleware from './middleware';
 import reducers from './reducers';
 import { API } from './constants';
 import initialState from './initialState.json';
-import Root from './Root';
+import Root from './Root.container.js';
 
 const client = new ApolloClient({
     link: createHttpLink({ uri: API.local }),

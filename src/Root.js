@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
-import PrivateRoute from './components/core/PrivateRoute/PrivateRoute.container';
+import PrivateRoute from './components/core/PrivateRoute';
 
-const Root = () => (
-    <Router>
-        <Switch>
-            <Route exact path='/' component={() => <h1>HomePage</h1>} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-        </Switch>
-    </Router>
-);
+class Root extends Component {
+    constructor() {
+        super();
+    }
+
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route exact path='/' component={() => <h1>HomePage</h1>} />
+                    <Route exact path='/register' component={Register} />
+                    <Route exact path='/login' component={Login} />
+                    <PrivateRoute loggedUser={this.props.loggedUser} path="/admin" component={() => <h1>Admin page</h1>} />
+                </Switch>
+            </Router>
+        )
+    }
+};
 
 export default Root;
