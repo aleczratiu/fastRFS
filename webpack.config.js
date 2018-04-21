@@ -13,6 +13,7 @@ module.exports = {
         vendor: ['react', 'react-dom'],
     },
     output: {
+        publicPath: '/',
         filename: '[name].[md5:contenthash:hex:20].bundle.js',
         chunkFilename: '[name].[md5:contenthash:hex:20].bundle.js',
         path: path.resolve(__dirname, 'dist')
@@ -59,6 +60,9 @@ module.exports = {
                 })
             },
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         extractSass,
