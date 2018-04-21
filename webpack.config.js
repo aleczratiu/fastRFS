@@ -37,9 +37,6 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: {
                     loader: 'babel-loader',
-                    query: {
-                        presets: ['env', 'react']
-                    }
                 }
             },
             {
