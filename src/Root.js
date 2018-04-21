@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import PrivateRoute from './components/core/PrivateRoute';
@@ -21,6 +22,14 @@ class Root extends Component {
             </Router>
         )
     }
+};
+
+Root.propTypes = {
+    loggedUser: PropTypes.shape({
+        firstName: PropTypes.string,
+        lastName: PropTypes.string,
+        email: PropTypes.string,
+    }).isRequired,
 };
 
 export default Root;

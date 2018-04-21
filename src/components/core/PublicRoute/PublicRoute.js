@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
-export const PublicRoute = ({ component: Component, ...rest, loggedUser }) => (
+const PublicRoute = ({ component: Component, ...rest, loggedUser }) => (
     <Route
         {...rest}
         render={props => (
@@ -12,3 +13,16 @@ export const PublicRoute = ({ component: Component, ...rest, loggedUser }) => (
         )}
     />
 );
+
+PublicRoute.propTypes = {
+    component: PropTypes.func.isRequired,
+    path: PropTypes.string,
+    name: PropTypes.string,
+};
+
+PublicRoute.defaultProps = {
+    path: '',
+    name: null,
+};
+
+export default PublicRoute;
