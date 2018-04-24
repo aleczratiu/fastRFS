@@ -14,7 +14,7 @@ import initialState from './initialState.json';
 import Root from './Root.container.js';
 
 const client = new ApolloClient({
-    link: createHttpLink({ uri: API.local }),
+    link: createHttpLink({ uri: 'http://localhost:4004/' }),
     cache: new InMemoryCache(),
 });
 
