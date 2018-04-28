@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Register.scss';
 
 class Register extends Component {
@@ -29,6 +30,7 @@ class Register extends Component {
     render() {
         return (
             <div className={styles.Register_wrapper}>
+                <Link to="/">Home</Link>
                 <h1>Register</h1>
                 <input type="email" onChange={this.setEmail} />
                 <input type="email" onChange={this.setPassword} />

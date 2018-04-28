@@ -15,7 +15,8 @@ const REGISTER_USER_MUTATION = gql`
         ) {
             email,
             updatedAt,
-            createdAt
+            createdAt,
+            sessionToken
         }
     }
 `;
