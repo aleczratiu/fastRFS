@@ -1,13 +1,13 @@
 import gql from 'graphql-tag';
 
-const REGISTER_USER_MUTATION = gql`
+const REGISTER_USER_MUTATION = gql `
     mutation RegisterUser(
         $email: String!,
         $password: String!,
         $updatedAt: String!,
         $createdAt: String!,
     ) {
-        addUser(
+        registerUser(
             email: $email,
             password: $password
             updatedAt: $updatedAt

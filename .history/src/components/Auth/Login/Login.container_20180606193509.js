@@ -13,7 +13,7 @@ const LoginUserWithData = graphql(
                 try {
                     const { data: { createSessionToken: { id, email, sessionToken } } } = await mutate({ variables });
 
-                    setSessionToken(sessionToken);
+                    await setSessionToken(sessionToken);
 
                     ownProps.setUser({
                         id,
