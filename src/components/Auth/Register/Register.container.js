@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
+import { push } from 'react-router-redux';
 import { REGISTER_USER_MUTATION } from 'Apollo/mutations';
-import { setUser } from '../../../actions/loggedUser';
-import { setSessionToken } from '../../../utils/auth';
+import { setUser } from 'Actions/loggedUser';
+import { setSessionToken } from 'Utils/auth';
+import { ROUTES } from 'Constants';
 import Register from './Register';
 
 const RegisterUserData = graphql(
@@ -21,6 +23,9 @@ const RegisterUserData = graphql(
                         updatedAt,
                         createdAt,
                     });
+
+                    ownProps.redirect(ROUTES.ROOT);
+
                 } catch (e) {
                     console.log('e', e);
                 };
@@ -34,6 +39,7 @@ export default connect(
         loggedUser: state.loggedUser,
     }),
     dispatch => ({
+        redirect: path => dispatch(push(path)),
         setUser: response => dispatch(setUser(response))
     })
 )(RegisterUserData);
