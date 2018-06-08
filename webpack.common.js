@@ -91,7 +91,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: path.resolve(publicPath, 'index.html'),
             filename: 'index.html',
-            title: 'CityReport',
+            title: 'MyApp',
             inject: true,
             minify: {
                 collapseInlineTagWhitespace: true,

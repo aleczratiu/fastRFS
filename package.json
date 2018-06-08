@@ -7,7 +7,7 @@
     "start": "yarn clean && webpack-dev-server --profile --colors --progress --hot --open --config webpack.dev.js",
     "watch": "webpack --watch --progress --profile --colors --config webpack.dev.js",
     "build:dev": "yarn clean && webpack --profile --colors --progress --config webpack.dev.js",
-    "build:prod": "yarn clean && webpack --profile --colors --config webpack.prod.js",
+    "build:prod": "yarn clean && webpack -p --profile --colors --config webpack.prod.js",
     "snyk test": "snyk test",
     "test": "mv .babelrc .babelrc.old && mv .babelrc.jest .babelrc ; jest ; mv .babelrc .babelrc.jest && mv .babelrc.old .babelrc",
     "test:coverage": "jest --coverage",
