@@ -29,6 +29,7 @@ class Login extends Component {
         return (
             <div>
                 <Link to="/">Home</Link>
+                <Link to="/register">Register</Link>
                 <h1>Login</h1>
                 <input type="email" onChange={this.setEmail} />
                 <input type="password" onChange={this.setPassword} />

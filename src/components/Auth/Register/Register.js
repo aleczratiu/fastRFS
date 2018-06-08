@@ -31,6 +31,7 @@ class Register extends Component {
         return (
             <div className={styles.Register_wrapper}>
                 <Link to="/">Home</Link>
+                <Link to="/login">Login</Link>
                 <h1>Register</h1>
                 <input type="email" onChange={this.setEmail} />
                 <input type="email" onChange={this.setPassword} />

@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
+import { getSessionToken } from 'Utils/auth';
+import { ROUTES } from 'Constants';
 
-const PublicRoute = ({ component: Component, ...rest, loggedUser }) => (
+const PublicRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props => (
-            loggedUser.email !== null && loggedUser.email !== '' ?
-                <Redirect to='/' />
-            :
+            !getSessionToken() ? (
                 <Component {...props} />
+            ) : (
+                    <Redirect
+                        to={{
+                            pathname: ROUTES.ROOT,
+                            state: { from: props.path },
+                        }}
+                    />
+                )
         )}
     />
 );
@@ -17,12 +25,10 @@ const PublicRoute = ({ component: Component, ...rest, loggedUser }) => (
 PublicRoute.propTypes = {
     component: PropTypes.func.isRequired,
     path: PropTypes.string,
-    name: PropTypes.string,
 };
 
 PublicRoute.defaultProps = {
     path: '',
-    name: null,
 };
 
 export default PublicRoute;

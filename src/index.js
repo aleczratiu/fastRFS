@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { render } from 'react-dom';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { routerMiddleware } from 'react-router-redux';

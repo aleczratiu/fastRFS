@@ -1,15 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
+import { getSessionToken } from 'Utils/auth';
+import { ROUTES } from 'Constants';
 
 const PrivateRoute = ({ component: Component, ...rest, loggedUser }) => (
     <Route
         {...rest}
         render={props => (
-            loggedUser.email !== null && loggedUser.email !== '' ?
+            getSessionToken() ?
                 <Component {...props} />
-            :
-                <Redirect to="/" />
+                :
+                <Redirect
+                    to={{
+                        pathname: ROUTES.LOGIN,
+                        state: { from: props.path },
+                    }}
+                />
         )}
     />
 );

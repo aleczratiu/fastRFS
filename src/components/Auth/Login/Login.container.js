@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import { CREATE_SESSION_TOKEN_MUTATION } from 'Apollo/mutations';
-import { setUser } from '../../../actions/loggedUser';
-import { setSessionToken } from '../../../utils/auth';
+import { setUser } from 'Actions/loggedUser';
+import { setSessionToken } from 'Utils/auth';
+import { ROUTES } from 'Constants';
+import { push } from 'react-router-redux';
 import Login from './Login';
 
 const LoginUserWithData = graphql(
@@ -18,9 +20,11 @@ const LoginUserWithData = graphql(
                     ownProps.setUser({
                         id,
                         email
-                    })
+                    });
 
-                } catch(e) {
+                    ownProps.redirect(ROUTES.ROOT);
+
+                } catch (e) {
                     console.log('e', e);
                 }
             }
@@ -33,6 +37,7 @@ export default connect(
         loggedUser: state.loggedUser,
     }),
     dispatch => ({
+        redirect: path => dispatch(push(path)),
         setUser: response => dispatch(setUser(response))
     })
 )(LoginUserWithData);
